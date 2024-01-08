@@ -233,7 +233,7 @@ if(gettingValue.round==1){
 
 })
 }
-const duration = 6910;
+const duration = 7200;
 const alwaysH2 = document.getElementById("always");
 setTimeout(function() {
     document.getElementById("loading-container").style.display = "none";
