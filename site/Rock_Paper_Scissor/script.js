@@ -145,7 +145,7 @@ if(gettingValue.round==1){
             document.getElementById("op").style.display="none";
             document.getElementById("tournament_catagorey").style.display="none";
             if(gettingValue.turncwin==2){
-                document.getElementById("teller").innerHTML="You  lose by a cumalation of this round . End of the round"
+                document.getElementById("teller").innerHTML="You  lose by a accumulation of this round . End of the round"
                 problem=setTimeout(()=>{
                     stopping()
                     document.getElementById("answer").className="disabled"
@@ -154,7 +154,7 @@ if(gettingValue.round==1){
                     clearTime()
                 },4000)
             }else if(gettingValue.turnuwin==2){
-                document.getElementById("teller").innerHTML="Congragulation !You  win by a cumalation of this round . End of the round"
+                document.getElementById("teller").innerHTML="Congragulation !You  win by a accumulation of this round . End of the round"
                 problem=setTimeout(()=>{
                     stopping()
                     document.getElementById("answer").className="disabled"
