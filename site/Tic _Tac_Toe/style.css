@@ -16,10 +16,11 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 40px);
     grid-template-rows: repeat(3, 40px);
-    gap: 43px;
+    gap: 25px;
     margin:auto;
    
-
+    margin-left: 5%;
+    margin-right: 10%;
     
     justify-content: center;
     align-content: center;
@@ -30,8 +31,8 @@ body {
 }
 h2{
     width:100%;
-    font-size:2rem;
-    font-weight:600px;
+    font-size:1rem;
+    font-weight:400px;
     text-align: center;
     background: black;
     margin-bottom: 1%;
@@ -40,8 +41,8 @@ h2{
 }
 
 .box {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: rgb(141, 226, 219);
     margin: 0;
     position: relative;
@@ -52,9 +53,9 @@ h2{
 .box::after {
     content: "";
     position: absolute;
-    width: 10px;
-    height: 120px;
-    background-color: rgb(17, 17, 17);
+    width: 7.5px;
+    height: 9px;
+    background-color: rgb(124, 17, 17);
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
@@ -67,11 +68,12 @@ h2{
     transform: rotate(45deg);
 }
 
+
 .box.clicked::before,
 .box.clicked::after {
    
-    width: 8px;
-    height: 60px;
+    width: 6px;
+    height: 45px;
     margin-left: 30px;
     margin-top: 8px;
     animation: showing 0.7s ease-in-out forwards;
@@ -85,9 +87,9 @@ h2{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height:60px;
-    background-color: rgb(0, 0, 0);
+    width: 45px;
+    height:45px;
+    background-color: rgb(124, 17, 17);
     border: 2px solid transparent;
     border-radius: 50%;
     opacity: 0;
@@ -98,6 +100,7 @@ h2{
     margin:0 auto;
     padding-left: 1%;
     margin-top: 0.1%;
+    z-index: 2;
     animation:showing 0.7s ease-in-out forwards
 }
 .going{
@@ -152,7 +155,7 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
 
 #scoreContainer{
     margin-top: 20px;
-    padding-left: 20px;
+    
     display:flex;
     justify-content: center;
 }
@@ -163,7 +166,7 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
     opacity:0.3;
     border:1px solid transparent;
     border-radius:5px;
-    margin:5px;
+    margin:10px;
 }
 .increaseOpacity{
     animation: op 1s ease-in-out forwards;
@@ -191,6 +194,8 @@ footer p{
     position:absolute;
     right:20px;
     top:60px;
+    width:fit-content;
+    display:inline-block;
    
 }
 .icon:hover{
@@ -198,8 +203,8 @@ footer p{
 }
 .icon img{
     float:right;
-    width:10%;
-    height:10%;
+    width:5%;
+    height:5%;
 }
 
 @keyframes showing {
@@ -222,8 +227,55 @@ footer p{
 
 
 
-/* @media all and (min-width:1370px){
+@media all and (min-width: 480px){
     .container{
-        margin-left: auto;
+        margin: auto;
+        gap: 43px;
     }
-} */
+    #scoreContainer{
+       
+        padding-left: 20px;
+
+    }
+    .icon img{
+        float:right;
+        width:10%;
+        height:10%;
+    }
+    h2{
+        
+        font-size:2rem;
+        font-weight:600px;
+
+    }
+    .box {
+        width: 80px;
+        height: 80px;
+
+    }
+    
+    .box::before,
+    .box::after {
+
+        width: 10px;
+        height: 120px;
+
+    }
+    
+
+    
+    
+    .box.clicked::before,
+    .box.clicked::after {
+       
+        width: 8px;
+        height: 60px;
+
+    }
+
+    .circle {
+        width: 60px;
+        height:60px;
+
+    }
+}
