@@ -221,7 +221,7 @@ if(gaming.checked==0){
                     document.getElementById("c").style.display="block"
                     
                     counter++;
-                    finishingaisecondRound();
+                    winingConditionO()
                    
                    
                     aiCompiled()
@@ -240,7 +240,7 @@ if(gaming.checked==0){
                     document.getElementById("c").style.display="block"
                     
                     counter++;
-                    finishingaithirdRound();
+                    winingConditionO();
                    
                    
                     
