@@ -240,7 +240,7 @@ if(gaming.checked==0){
                     document.getElementById("c").style.display="block"
                     
                     counter++;
-                    winingConditionO();
+                    winingConditionO()
                    
                    
                     
@@ -774,15 +774,15 @@ function aiCompiled(){
     }else  if((box2.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
         box3.classList.add("xchecked"); //second and sixth checked
         box3.classList.add("clicked")
-    }else  if((box1.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
+    }else  if((box2.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
         box1.classList.add("xchecked"); //second and seventh checked
         box1.classList.add("clicked")
     }else  if((box3.classList.contains("ochecked"))&&(box4.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
         box1.classList.add("xchecked");// third and fourth checked
         box1.classList.add("clicked")
-    }else  if((box1.classList.contains("ochecked"))&&(box2.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
-        box2.classList.add("xchecked");// second and ninth checked
-        box9.classList.add("clicked")
+    }else  if((box2.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
+        box3.classList.add("xchecked");// second and ninth checked
+        box3.classList.add("clicked")
     }else  if((box3.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("xchecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked"); //third and eight checked
         box9.classList.add("clicked")
