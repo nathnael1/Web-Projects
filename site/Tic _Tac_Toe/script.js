@@ -12,25 +12,22 @@ document.addEventListener("DOMContentLoaded", function () {
         checked:0,
         aiTurn:0,
     };
-let rand=Math.floor(Math.random()*2)
-gaming.players=rand;
-let color = "dark";
-document.getElementById("darkmode").addEventListener("click", function() {
-    if (color == "dark") {
-        color = "light";
-        document.getElementById("body").style.background = "#72A0C1";
-        document.getElementById("h2").style.background = "#72A0C1";
-        document.getElementById("h2").style.color = "#000";
-        document.getElementById("foot").style.background = "#2c3968";
-    } else {
-        color = "dark";
-        document.getElementById("body").style.background = "linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%)";
-        document.getElementById("h2").style.background = "#000";
-        document.getElementById("h2").style.color = "#fff";
-        document.getElementById("foot").style.background = "#000";
-    }
-});
-
+    let boxes = document.querySelectorAll(".box");
+    let circle = document.querySelectorAll(".circle");
+    let rand = Math.floor(Math.random() * 2);
+    gaming.players = rand;
+    let color = "dark";
+   
+    document.getElementById("darkmodesub").addEventListener("click", function() {
+        
+        darkMode()
+        if(color=="dark"){
+            color = "light";
+        }else{
+            color="dark"
+        }
+    });
+    
 let ongoing=document.getElementById("ongoing");
 let box1=document.getElementById("box1");
 let box2=document.getElementById("box2")
@@ -43,7 +40,7 @@ let box8=document.getElementById("box8")
 let box9=document.getElementById("box9")
 let message=document.getElementById("message")
 let counter=0; 
-let boxes = document.querySelectorAll(".box");
+
 let boxx = document.querySelectorAll(".within");
 let y;
 let round=document.getElementById("tournament").value;
@@ -102,7 +99,7 @@ if(gaming.checked==0){
             ongoing.className="going"
             showingWhichRound()
             y = document.querySelector(`#${boxId} > div`); // Fix selector
-            
+           
 
             if (y && !(box.classList.contains("ochecked")) && !(box.classList.contains("xchecked"))) {
                 // y.classList.remove("disabled");
@@ -199,18 +196,19 @@ if(gaming.checked==0){
                         y.classList.remove("disabled");
                         y.classList.add("circle");
                         box.classList.add("ochecked");
-                        document.getElementById("a").style.display="block"
-                        document.getElementById("b").style.display="block"
-                        document.getElementById("c").style.display="block"
+                        document.getElementById("a").style.display="none"
+                        document.getElementById("b").style.display="none"
+                        document.getElementById("c").style.display="none"
                         
                         counter++;
                         winingConditionO();
                        
                        
                         finishing()
+
                         aiCompiled()
                         winingConditionAi()
-                        counter++
+                        
                         
                         
                         finishing()
@@ -224,12 +222,12 @@ if(gaming.checked==0){
                     document.getElementById("c").style.display="block"
                     
                     counter++;
-                    finishingaisecondRound();
+                    winingConditionO()
                    
                    
                     aiCompiled()
                     winingConditionAi()
-                    counter++
+                   
                     
                     
                     finishingaisecondRound()
@@ -243,13 +241,13 @@ if(gaming.checked==0){
                     document.getElementById("c").style.display="block"
                     
                     counter++;
-                    finishingaithirdRound();
+                    winingConditionO()
                    
                    
                     
                     aiCompiled()
                     winingConditionAi()
-                    counter++
+                    
                     
                     
                     finishingaithirdRound()
@@ -587,549 +585,368 @@ function score(){
 }
 function aiCompiled(){
    
-    if(box1.classList.contains("xchecked")&&box2.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))){
+    if(box1.classList.contains("xchecked")&&box2.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box3.classList.add("xchecked");
         box3.classList.add("clicked")
-    }else  if(box2.classList.contains("xchecked")&&box3.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))){
+        counter++;
+    }else  if(box2.classList.contains("xchecked")&&box3.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box1.classList.add("xchecked");
         box1.classList.add("clicked")
-    }else  if(box1.classList.contains("xchecked")&&box3.classList.contains("xchecked")&&!(box2.classList.contains("ochecked"))){
+        counter++;
+    }else  if(box1.classList.contains("xchecked")&&box3.classList.contains("xchecked")&&!(box2.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box2.classList.add("xchecked");
         box2.classList.add("clicked")
-    }else if(box4.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box6.classList.contains("ochecked"))){
+        counter++;
+    }else if(box4.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box6.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box6.classList.add("xchecked");
         box6.classList.add("clicked")
-    }else if(box5.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box4.classList.contains("ochecked"))){
+        counter++;
+    }else if(box5.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box4.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box4.classList.add("xchecked");
         box4.classList.add("clicked")
-    }else if(box4.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))){
+        counter++;
+    }else if(box4.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box5.classList.add("xchecked");
         box5.classList.add("clicked")
+        counter++;
     } 
-    else  if(box7.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))){
+    else  if(box7.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box9.classList.add("xchecked");
         box9.classList.add("clicked")
-    }else if(box8.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))){
+        counter++;
+    }else if(box8.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box7.classList.add("xchecked");
         box7.classList.add("clicked")
-    }else if(box7.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box8.classList.contains("ochecked"))){
+        counter++;
+    }else if(box7.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box8.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box8.classList.add("xchecked");
         box8.classList.add("clicked")
+        counter++;
     }
-    else if(box1.classList.contains("xchecked")&&box4.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))){
+    else if(box1.classList.contains("xchecked")&&box4.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box7.classList.add("xchecked");
         box7.classList.add("clicked")
-    }else if(box4.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))){
+        counter++;
+    }else if(box4.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box1.classList.add("xchecked");
         box1.classList.add("clicked")
-    }else if(box1.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box4.classList.contains("ochecked"))){
+        counter++;
+    }else if(box1.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box4.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box4.classList.add("xchecked");
         box4.classList.add("clicked")
+        counter++;
     }
-    else  if(box2.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box8.classList.contains("ochecked"))){
+    else  if(box2.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box8.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box8.classList.add("xchecked");
         box8.classList.add("clicked")
-    }else if(box5.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box2.classList.contains("ochecked"))){
+        counter++;
+    }else if(box5.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box2.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box2.classList.add("xchecked");
         box2.classList.add("clicked")
-    }else if(box2.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))){
+        counter++;
+    }else if(box2.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box5.classList.add("xchecked");
         box5.classList.add("clicked")
+        counter++;
     }
-    else   if(box3.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))){
+    else   if(box3.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box9.classList.add("xchecked");
         box9.classList.add("clicked")
-    }else if(box6.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))){
+        counter++;
+    }else if(box6.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box3.classList.add("xchecked");
         box3.classList.add("clicked")
-    }else if(box3.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box6.classList.contains("ochecked"))){
+        counter++;
+    }else if(box3.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box6.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box6.classList.add("xchecked");
         box6.classList.add("clicked")
+        counter++;
     }
     
-    else    if(box1.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))){
+    else    if(box1.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box9.classList.add("xchecked");
         box9.classList.add("clicked");
-    }else if(box5.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))){
+        counter++;
+    }else if(box5.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box1.classList.add("xchecked");
         box1.classList.add("clicked");
-    }else if(box1.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))){
+        counter++;
+    }else if(box1.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box5.classList.add("xchecked");
         box5.classList.add("clicked");
+        counter++;
     }
-    else   if(box3.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))){
+    else   if(box3.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box7.classList.add("xchecked");
         box7.classList.add("clicked");
-    }else if(box5.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))){
+        counter++;
+    }else if(box5.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box3.classList.add("xchecked");
         box3.classList.add("clicked");
-    }else if(box3.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))){
+        counter++;
+    }else if(box3.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))&&(gaming.player1Win!=1)){
         box5.classList.add("xchecked");
         box5.classList.add("clicked")
+        counter++;
     }else if ((box1.classList.contains("ochecked")) && (box2.classList.contains("ochecked")) && !(box3.classList.contains("xchecked")) && !(box3.classList.contains("ochecked"))) {
         box3.classList.add("xchecked");
         box3.classList.add("clicked");
+        counter++;
     } else if ((box2.classList.contains("ochecked")) && (box3.classList.contains("ochecked")) && !(box1.classList.contains("xchecked")) && !(box1.classList.contains("ochecked"))) {
         box1.classList.add("xchecked");
         box1.classList.add("clicked");
+        counter++;
     } else if ((box1.classList.contains("ochecked")) && (box3.classList.contains("ochecked")) && !(box2.classList.contains("xchecked")) && !(box2.classList.contains("ochecked"))) {
         box2.classList.add("xchecked");
         box2.classList.add("clicked");
+        counter++;
     } else if ((box4.classList.contains("ochecked")) && (box5.classList.contains("ochecked")) && !(box6.classList.contains("xchecked")) && !(box6.classList.contains("ochecked"))) {
         box6.classList.add("xchecked");
         box6.classList.add("clicked");
+        counter++;
     } else if ((box5.classList.contains("ochecked")) && (box6.classList.contains("ochecked")) && !(box4.classList.contains("xchecked")) && !(box4.classList.contains("ochecked"))) {
         box4.classList.add("xchecked");
         box4.classList.add("clicked");
+        counter++;
     } else if ((box4.classList.contains("ochecked")) && (box6.classList.contains("ochecked")) && !(box5.classList.contains("xchecked")) && !(box5.classList.contains("ochecked"))) {
         box5.classList.add("xchecked");
         box5.classList.add("clicked");
+        counter++;
     } else if ((box7.classList.contains("ochecked")) && (box8.classList.contains("ochecked")) && !(box9.classList.contains("xchecked")) && !(box9.classList.contains("ochecked"))) {
         box9.classList.add("xchecked");
         box9.classList.add("clicked");
+        counter++;
     } else if ((box8.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box7.classList.contains("xchecked")) && !(box7.classList.contains("ochecked"))) {
         box7.classList.add("xchecked");
         box7.classList.add("clicked");
+        counter++;
     } else if ((box7.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box8.classList.contains("xchecked")) && !(box8.classList.contains("ochecked"))) {
         box8.classList.add("xchecked");
         box8.classList.add("clicked");
+        counter++;
     } else if ((box1.classList.contains("ochecked")) && (box4.classList.contains("ochecked")) && !(box7.classList.contains("xchecked")) && !(box7.classList.contains("ochecked"))) {
         box7.classList.add("xchecked");
         box7.classList.add("clicked");
+        counter++;
     } else if ((box4.classList.contains("ochecked")) && (box7.classList.contains("ochecked")) && !(box1.classList.contains("xchecked")) && !(box1.classList.contains("ochecked"))) {
         box1.classList.add("xchecked");
         box1.classList.add("clicked");
+        counter++;
     } else if ((box1.classList.contains("ochecked")) && (box7.classList.contains("ochecked")) && !(box4.classList.contains("xchecked")) && !(box4.classList.contains("ochecked"))) {
         box4.classList.add("xchecked");
         box4.classList.add("clicked");
+        counter++;
     } else if ((box2.classList.contains("ochecked")) && (box5.classList.contains("ochecked")) && !(box8.classList.contains("xchecked")) && !(box8.classList.contains("ochecked"))) {
         box8.classList.add("xchecked");
         box8.classList.add("clicked");
+        counter++;
     } else if ((box5.classList.contains("ochecked")) && (box8.classList.contains("ochecked")) && !(box2.classList.contains("xchecked")) && !(box2.classList.contains("ochecked"))) {
         box2.classList.add("xchecked");
         box2.classList.add("clicked");
+        counter++;
     } else if ((box2.classList.contains("ochecked")) && (box8.classList.contains("ochecked")) && !(box5.classList.contains("xchecked")) && !(box5.classList.contains("ochecked"))) {
         box5.classList.add("xchecked");
         box5.classList.add("clicked");
+        counter++;
     } else if ((box3.classList.contains("ochecked")) && (box6.classList.contains("ochecked")) && !(box9.classList.contains("xchecked")) && !(box9.classList.contains("ochecked"))) {
         box9.classList.add("xchecked");
         box9.classList.add("clicked");
+        counter++;
     } else if ((box6.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box3.classList.contains("xchecked")) && !(box3.classList.contains("ochecked"))) {
         box3.classList.add("xchecked");
         box3.classList.add("clicked");
+        counter++;
     } else if ((box3.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box6.classList.contains("xchecked")) && !(box6.classList.contains("ochecked"))) {
         box6.classList.add("xchecked");
         box6.classList.add("clicked");
+        counter++;
     } else if ((box1.classList.contains("ochecked")) && (box5.classList.contains("ochecked")) && !(box9.classList.contains("xchecked")) && !(box9.classList.contains("ochecked"))) {
         box9.classList.add("xchecked");
         box9.classList.add("clicked");
+        counter++;
     } else if ((box5.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box1.classList.contains("xchecked")) && !(box1.classList.contains("ochecked"))) {
         box1.classList.add("xchecked");
         box1.classList.add("clicked");
+        counter++;
     } else if ((box1.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box5.classList.contains("xchecked")) && !(box5.classList.contains("ochecked"))) {
         box5.classList.add("xchecked");
         box5.classList.add("clicked");
+        counter++;
     } else if ((box3.classList.contains("ochecked")) && (box5.classList.contains("ochecked")) && !(box7.classList.contains("xchecked")) && !(box7.classList.contains("ochecked"))) {
         box7.classList.add("xchecked");
         box7.classList.add("clicked");
+        counter++;
     } else if ((box5.classList.contains("ochecked")) && (box7.classList.contains("ochecked")) && !(box3.classList.contains("xchecked")) && !(box3.classList.contains("ochecked"))) {
         box3.classList.add("xchecked");
         box3.classList.add("clicked");
+        counter++;
     } else if ((box3.classList.contains("ochecked")) && (box7.classList.contains("ochecked")) && !(box5.classList.contains("xchecked")) && !(box5.classList.contains("ochecked"))) {
         box5.classList.add("xchecked");
         box5.classList.add("clicked");
+        counter++;
     }else if((box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked"); //box 1 clicked
         box9.classList.add("clicked")
+        counter++;
     }else  if(!(box1.classList.contains("ochecked"))&&(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");//box 2 clicked
         box9.classList.add("clicked")
+        counter++;
     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");//box 3 clicked
         box9.classList.add("clicked")
+        counter++;
     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");//box 4 clicked
         box9.classList.add("clicked")
+        counter++;
     } else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");//box 5 clicked
         box9.classList.add("clicked")
+        counter++;
     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");//box 6 clicked
-        box9.classList.add("clicked")
+        box9.classList.add("clicked") 
+        counter++;
     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");// box 7 clicked
         box9.classList.add("clicked")
+        counter++;
     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");//box 8 clicked
         box9.classList.add("clicked")
+        counter++;
     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))){
         box1.classList.add("xchecked");//box 9 clicked
         box1.classList.add("clicked")
+        counter++;
     }else if((box1.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
         box3.classList.add("xchecked");//first and  sixth checked
         box3.classList.add("clicked")
+        counter++;
     }else  if((box1.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box7.classList.contains("xchecked"))&&!(box7.classList.contains("ochecked"))){
         box7.classList.add("xchecked");//first and  eighth cheked
         box7.classList.add("clicked")
+        counter++;
     }else  if((box2.classList.contains("ochecked"))&&(box4.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
         box1.classList.add("xchecked");// second and fourth checked
         box1.classList.add("clicked")
+        counter++;
     }else  if((box2.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
         box3.classList.add("xchecked"); //second and sixth checked
         box3.classList.add("clicked")
-    }else  if((box1.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
+        counter++;
+    }else  if((box2.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
         box1.classList.add("xchecked"); //second and seventh checked
         box1.classList.add("clicked")
+        counter++;
     }else  if((box3.classList.contains("ochecked"))&&(box4.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
         box1.classList.add("xchecked");// third and fourth checked
         box1.classList.add("clicked")
-    }else  if((box1.classList.contains("ochecked"))&&(box2.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
-        box2.classList.add("xchecked");// second and ninth checked
-        box9.classList.add("clicked")
+        counter++;
+    }else  if((box2.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
+        box3.classList.add("xchecked");// second and ninth checked
+        box3.classList.add("clicked")
+        counter++;
     }else  if((box3.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("xchecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked"); //third and eight checked
         box9.classList.add("clicked")
+        counter++;
     }else if((box4.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box7.classList.contains("xchecked"))&&!(box7.classList.contains("ochecked"))){
         box7.classList.add("xchecked");//fourth and eighth
         box7.classList.add("clicked")
+        counter++;
     }else if((box4.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))&&!(box7.classList.contains("xchecked"))&&!(box7.classList.contains("ochecked"))){
         box7.classList.add("xchecked");//fourth and nineth
         box7.classList.add("clicked")
+        counter++;
     }else if((box6.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("xchecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");//sixth and  eigth checked
         box9.classList.add("clicked")
+        counter++;
     }else if((box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box9.classList.contains("xchecked"))&&!(box9.classList.contains("ochecked"))){
         box9.classList.add("xchecked");//sixth and  seventh checked
         box9.classList.add("clicked")
+        counter++;
     }else if((box1.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
         box3.classList.add("xchecked");//box 9 clicked by ai || box 1 and 5 clicked by person
         box3.classList.add("clicked") //done airoadsecondblock
+        counter++;
     }else  if((box3.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
         box5.classList.add("xchecked");//box 9 clicked by ai || box 3 and 6 clicked by person
         box5.classList.add("clicked") //done airoadsecondblock
+        counter++;
     }else  if((box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
         box5.classList.add("xchecked");//box 9 clicked by ai || box 6 and 7 clicked by person
         box5.classList.add("clicked") //done airoadsecondblock
+        counter++;
     }else  if((box7.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
         box5.classList.add("xchecked");//box 9 clicked by ai || box 7 and 8 clicked by person
         box5.classList.add("clicked") //done airoadsecondblock
+        counter++;
     }else  if((box6.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
         box5.classList.add("xchecked");//box 9 clicked by ai || box 6 and 8 clicked by person
         box5.classList.add("clicked")//done airroadsecondblock
+        counter++;
     }else  if((box9.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box1.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
         box3.classList.add("xchecked");//box 1 clicked by ai || box 9 and 5 clicked by person
         box3.classList.add("clicked")
+        counter++;
     }else if((box1.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&(box3.classList.contains("xchecked"))&&(box4.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&!(box2.classList.contains("ochecked"))){
         box2.classList.add("xchecked");//box 3,4,9 clicked by ai || box 1,5,6,7 clicked by person
         box2.classList.add("clicked")
+        counter++;
     }else if((box2.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))&&(box1.classList.contains("xchecked"))&&(box3.classList.contains("xchecked"))&&(box8.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box4.classList.contains("ochecked"))){
         box4.classList.add("xchecked");//box 1,3,8 clicked by ai || box  2  5,7,9 clicked by person
         box4.classList.add("clicked")
+        counter++;
     }else if((box1.classList.contains("ochecked"))&&(box2.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&(box3.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
         box5.classList.add("xchecked");//box 3,9 clicked by ai || box  1  2,6 clicked by person
         box5.classList.add("clicked")
+        counter++;
     }else if((box1.classList.contains("ochecked"))&&(box3.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&(box2.classList.contains("xchecked"))&&(box7.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box4.classList.contains("ochecked"))){
         box4.classList.add("xchecked");//box 2,7,9 clicked by ai || box  1  3,5,8 clicked by person
         box4.classList.add("clicked")
+        counter++;
     }else if((box3.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box4.classList.contains("xchecked"))&&!(box4.classList.contains("ochecked"))){
         box4.classList.add("xchecked");//box 9 clicked by ai || box    3,8 clicked by person
         box4.classList.add("clicked")
+        counter++;
     }else if((box2.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))){
         box1.classList.add("xchecked");//box 9 clicked by ai || box    3,8 clicked by person
         box1.classList.add("clicked")
+        counter++;
     }
 
 
 
 }
-});
+function darkMode(){
+    document.getElementById("darkmode").addEventListener("click", function() {
+        if (color == "dark") {
+           
+            document.getElementById("body").style.background = "#72A0C1";
+            document.getElementById("h2").style.background = "#72A0C1";
+            document.getElementById("h2").style.color = "#000";
+            document.getElementById("foot").style.background = "#2c3968";
+            boxes.forEach(each => {
+                each.style.background = "#000";
 
-// function aiThinkingDefendCritical() {
-//     if ((box1.classList.contains("ochecked")) && (box2.classList.contains("ochecked")) && !(box3.classList.contains("xchecked")) && !(box3.classList.contains("ochecked"))) {
-//         box3.classList.add("xchecked");
-//         box3.classList.add("clicked");
-//     } else if ((box2.classList.contains("ochecked")) && (box3.classList.contains("ochecked")) && !(box1.classList.contains("xchecked")) && !(box1.classList.contains("ochecked"))) {
-//         box1.classList.add("xchecked");
-//         box1.classList.add("clicked");
-//     } else if ((box1.classList.contains("ochecked")) && (box3.classList.contains("ochecked")) && !(box2.classList.contains("xchecked")) && !(box2.classList.contains("ochecked"))) {
-//         box2.classList.add("xchecked");
-//         box2.classList.add("clicked");
-//     } else if ((box4.classList.contains("ochecked")) && (box5.classList.contains("ochecked")) && !(box6.classList.contains("xchecked")) && !(box6.classList.contains("ochecked"))) {
-//         box6.classList.add("xchecked");
-//         box6.classList.add("clicked");
-//     } else if ((box5.classList.contains("ochecked")) && (box6.classList.contains("ochecked")) && !(box4.classList.contains("xchecked")) && !(box4.classList.contains("ochecked"))) {
-//         box4.classList.add("xchecked");
-//         box4.classList.add("clicked");
-//     } else if ((box4.classList.contains("ochecked")) && (box6.classList.contains("ochecked")) && !(box5.classList.contains("xchecked")) && !(box5.classList.contains("ochecked"))) {
-//         box5.classList.add("xchecked");
-//         box5.classList.add("clicked");
-//     } else if ((box7.classList.contains("ochecked")) && (box8.classList.contains("ochecked")) && !(box9.classList.contains("xchecked")) && !(box9.classList.contains("ochecked"))) {
-//         box9.classList.add("xchecked");
-//         box9.classList.add("clicked");
-//     } else if ((box8.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box7.classList.contains("xchecked")) && !(box7.classList.contains("ochecked"))) {
-//         box7.classList.add("xchecked");
-//         box7.classList.add("clicked");
-//     } else if ((box7.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box8.classList.contains("xchecked")) && !(box8.classList.contains("ochecked"))) {
-//         box8.classList.add("xchecked");
-//         box8.classList.add("clicked");
-//     } else if ((box1.classList.contains("ochecked")) && (box4.classList.contains("ochecked")) && !(box7.classList.contains("xchecked")) && !(box7.classList.contains("ochecked"))) {
-//         box7.classList.add("xchecked");
-//         box7.classList.add("clicked");
-//     } else if ((box4.classList.contains("ochecked")) && (box7.classList.contains("ochecked")) && !(box1.classList.contains("xchecked")) && !(box1.classList.contains("ochecked"))) {
-//         box1.classList.add("xchecked");
-//         box1.classList.add("clicked");
-//     } else if ((box1.classList.contains("ochecked")) && (box7.classList.contains("ochecked")) && !(box4.classList.contains("xchecked")) && !(box4.classList.contains("ochecked"))) {
-//         box4.classList.add("xchecked");
-//         box4.classList.add("clicked");
-//     } else if ((box2.classList.contains("ochecked")) && (box5.classList.contains("ochecked")) && !(box8.classList.contains("xchecked")) && !(box8.classList.contains("ochecked"))) {
-//         box8.classList.add("xchecked");
-//         box8.classList.add("clicked");
-//     } else if ((box5.classList.contains("ochecked")) && (box8.classList.contains("ochecked")) && !(box2.classList.contains("xchecked")) && !(box2.classList.contains("ochecked"))) {
-//         box2.classList.add("xchecked");
-//         box2.classList.add("clicked");
-//     } else if ((box2.classList.contains("ochecked")) && (box8.classList.contains("ochecked")) && !(box5.classList.contains("xchecked")) && !(box5.classList.contains("ochecked"))) {
-//         box5.classList.add("xchecked");
-//         box5.classList.add("clicked");
-//     } else if ((box3.classList.contains("ochecked")) && (box6.classList.contains("ochecked")) && !(box9.classList.contains("xchecked")) && !(box9.classList.contains("ochecked"))) {
-//         box9.classList.add("xchecked");
-//         box9.classList.add("clicked");
-//     } else if ((box6.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box3.classList.contains("xchecked")) && !(box3.classList.contains("ochecked"))) {
-//         box3.classList.add("xchecked");
-//         box3.classList.add("clicked");
-//     } else if ((box3.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box6.classList.contains("xchecked")) && !(box6.classList.contains("ochecked"))) {
-//         box6.classList.add("xchecked");
-//         box6.classList.add("clicked");
-//     } else if ((box1.classList.contains("ochecked")) && (box5.classList.contains("ochecked")) && !(box9.classList.contains("xchecked")) && !(box9.classList.contains("ochecked"))) {
-//         box9.classList.add("xchecked");
-//         box9.classList.add("clicked");
-//     } else if ((box5.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box1.classList.contains("xchecked")) && !(box1.classList.contains("ochecked"))) {
-//         box1.classList.add("xchecked");
-//         box1.classList.add("clicked");
-//     } else if ((box1.classList.contains("ochecked")) && (box9.classList.contains("ochecked")) && !(box5.classList.contains("xchecked")) && !(box5.classList.contains("ochecked"))) {
-//         box5.classList.add("xchecked");
-//         box5.classList.add("clicked");
-//     } else if ((box3.classList.contains("ochecked")) && (box5.classList.contains("ochecked")) && !(box7.classList.contains("xchecked")) && !(box7.classList.contains("ochecked"))) {
-//         box7.classList.add("xchecked");
-//         box7.classList.add("clicked");
-//     } else if ((box5.classList.contains("ochecked")) && (box7.classList.contains("ochecked")) && !(box3.classList.contains("xchecked")) && !(box3.classList.contains("ochecked"))) {
-//         box3.classList.add("xchecked");
-//         box3.classList.add("clicked");
-//     } else if ((box3.classList.contains("ochecked")) && (box7.classList.contains("ochecked")) && !(box5.classList.contains("xchecked")) && !(box5.classList.contains("ochecked"))) {
-//         box5.classList.add("xchecked");
-//         box5.classList.add("clicked");
-//     }
-// }//ai proof done
+            });
+       
+        } else {
+        
+            document.getElementById("body").style.background = "linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%)";
+            document.getElementById("h2").style.background = "#000";
+            document.getElementById("h2").style.color = "#fff";
+            document.getElementById("foot").style.background = "#000";
+            boxes.forEach(each => {
+                each.style.background = "rgb(141, 226, 219)";
 
-// function aiThinkingStarting(){
-//  if((box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked"); //box 1 clicked
-//         box9.classList.add("clicked")
-//     }else  if(!(box1.classList.contains("ochecked"))&&(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");//box 2 clicked
-//         box9.classList.add("clicked")
-//     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");//box 3 clicked
-//         box9.classList.add("clicked")
-//     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");//box 4 clicked
-//         box9.classList.add("clicked")
-//     } else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");//box 5 clicked
-//         box9.classList.add("clicked")
-//     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");//box 6 clicked
-//         box9.classList.add("clicked")
-//     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");// box 7 clicked
-//         box9.classList.add("clicked")
-//     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");//box 8 clicked
-//         box9.classList.add("clicked")
-//     }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))){
-//         box1.classList.add("xchecked");//box 9 clicked
-//         box1.classList.add("clicked")
-//     }
-// }//ai proof done
-// function aiThinking2Step(){
-//     if((box1.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
-//         box3.classList.add("xchecked");//first and  sixth checked
-//         box3.classList.add("clicked")
-//     }else  if((box1.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box7.classList.contains("xchecked"))&&!(box7.classList.contains("ochecked"))){
-//         box7.classList.add("xchecked");//first and  eighth cheked
-//         box7.classList.add("clicked")
-//     }else  if((box2.classList.contains("ochecked"))&&(box4.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
-//         box1.classList.add("xchecked");// second and fourth checked
-//         box1.classList.add("clicked")
-//     }else  if((box2.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
-//         box3.classList.add("xchecked"); //second and sixth checked
-//         box3.classList.add("clicked")
-//     }else  if((box1.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
-//         box1.classList.add("xchecked"); //second and seventh checked
-//         box1.classList.add("clicked")
-//     }else  if((box3.classList.contains("ochecked"))&&(box4.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box1.classList.contains("ochecked"))){
-//         box1.classList.add("xchecked");// third and fourth checked
-//         box1.classList.add("clicked")
-//     }else  if((box1.classList.contains("ochecked"))&&(box2.classList.contains("ochecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
-//         box2.classList.add("xchecked");// second and ninth checked
-//         box9.classList.add("clicked")
-//     }else  if((box3.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("xchecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked"); //third and eight checked
-//         box9.classList.add("clicked")
-//     }else if((box4.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box7.classList.contains("xchecked"))&&!(box7.classList.contains("ochecked"))){
-//         box7.classList.add("xchecked");//fourth and eighth
-//         box7.classList.add("clicked")
-//     }else if((box4.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))&&!(box7.classList.contains("xchecked"))&&!(box7.classList.contains("ochecked"))){
-//         box7.classList.add("xchecked");//fourth and nineth
-//         box7.classList.add("clicked")
-//     }else if((box6.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("xchecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");//sixth and  eigth checked
-//         box9.classList.add("clicked")
-//     }else if((box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box9.classList.contains("xchecked"))&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");//sixth and  seventh checked
-//         box9.classList.add("clicked")
-//     }
-//     //1 - 8,6,  //2 - 4,6,7,9  //3-  4,8,   //4- 8,9  //6- 8 7 
-// }//ai proof done
-
-
-// function aiRoadBlockSecondMovev(){
-//     if((box1.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&(box3.classList.contains("xchecked"))&&(box4.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&!(box2.classList.contains("ochecked"))){
-//         box2.classList.add("xchecked");//box 3,4,9 clicked by ai || box 1,5,6,7 clicked by person
-//         box2.classList.add("clicked")
-//     }else if((box2.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))&&(box1.classList.contains("xchecked"))&&(box3.classList.contains("xchecked"))&&(box8.classList.contains("xchecked"))&&!(box.classList.contains("xchecked"))&&!(box4.classList.contains("ochecked"))){
-//         box4.classList.add("xchecked");//box 1,3,8 clicked by ai || box  2  5,7,9 clicked by person
-//         box4.classList.add("clicked")
-//     }
-// }//done
-// function aiAttacker(){
-//     if(box1.classList.contains("xchecked")&&box2.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))){
-//         box3.classList.add("xchecked");
-//         box3.classList.add("clicked")
-//     }else  if(box2.classList.contains("xchecked")&&box3.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))){
-//         box1.classList.add("xchecked");
-//         box1.classList.add("clicked")
-//     }else  if(box1.classList.contains("xchecked")&&box3.classList.contains("xchecked")&&!(box2.classList.contains("ochecked"))){
-//         box2.classList.add("xchecked");
-//         box2.classList.add("clicked")
-//     }else if(box4.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box6.classList.contains("ochecked"))){
-//         box6.classList.add("xchecked");
-//         box6.classList.add("clicked")
-//     }else if(box5.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box4.classList.contains("ochecked"))){
-//         box4.classList.add("xchecked");
-//         box4.classList.add("clicked")
-//     }else if(box4.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))){
-//         box5.classList.add("xchecked");
-//         box5.classList.add("clicked")
-//     } 
-//     else  if(box7.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");
-//         box9.classList.add("clicked")
-//     }else if(box8.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))){
-//         box7.classList.add("xchecked");
-//         box7.classList.add("clicked")
-//     }else if(box7.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box8.classList.contains("ochecked"))){
-//         box8.classList.add("xchecked");
-//         box8.classList.add("clicked")
-//     }
-//     else if(box1.classList.contains("xchecked")&&box4.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))){
-//         box7.classList.add("xchecked");
-//         box7.classList.add("clicked")
-//     }else if(box4.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))){
-//         box1.classList.add("xchecked");
-//         box1.classList.add("clicked")
-//     }else if(box1.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box4.classList.contains("ochecked"))){
-//         box4.classList.add("xchecked");
-//         box4.classList.add("clicked")
-//     }
-//     else  if(box2.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box8.classList.contains("ochecked"))){
-//         box8.classList.add("xchecked");
-//         box8.classList.add("clicked")
-//     }else if(box5.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box2.classList.contains("ochecked"))){
-//         box2.classList.add("xchecked");
-//         box2.classList.add("clicked")
-//     }else if(box2.classList.contains("xchecked")&&box8.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))){
-//         box5.classList.add("xchecked");
-//         box5.classList.add("clicked")
-//     }
-//     else   if(box3.classList.contains("xchecked")&&box6.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");
-//         box9.classList.add("clicked")
-//     }else if(box6.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))){
-//         box3.classList.add("xchecked");
-//         box3.classList.add("clicked")
-//     }else if(box3.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box6.classList.contains("ochecked"))){
-//         box6.classList.add("xchecked");
-//         box6.classList.add("clicked")
-//     }
+            });
+     
+        }
+    });
     
-//     else    if(box1.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box9.classList.contains("ochecked"))){
-//         box9.classList.add("xchecked");
-//         box9.classList.add("clicked");
-//     }else if(box5.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box1.classList.contains("ochecked"))){
-//         box1.classList.add("xchecked");
-//         box1.classList.add("clicked");
-//     }else if(box1.classList.contains("xchecked")&&box9.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))){
-//         box5.classList.add("xchecked");
-//         box5.classList.add("clicked");
-//     }
-//     else   if(box3.classList.contains("xchecked")&&box5.classList.contains("xchecked")&&!(box7.classList.contains("ochecked"))){
-//         box7.classList.add("xchecked");
-//         box7.classList.add("clicked");
-//     }else if(box5.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box3.classList.contains("ochecked"))){
-//         box3.classList.add("xchecked");
-//         box3.classList.add("clicked");
-//     }else if(box3.classList.contains("xchecked")&&box7.classList.contains("xchecked")&&!(box5.classList.contains("ochecked"))){
-//         box5.classList.add("xchecked");
-//         box5.classList.add("clicked")
-//     }}//aiproof done
-// function aiRoadBlockFirstMovev(){
-//     if((box1.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
-//         box3.classList.add("xchecked");//box 9 clicked by ai || box 1 and 5 clicked by person
-//         box3.classList.add("clicked") //done airoadsecondblock
-//     }else  if((box3.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
-//         box5.classList.add("xchecked");//box 9 clicked by ai || box 3 and 6 clicked by person
-//         box5.classList.add("clicked") //done airoadsecondblock
-//     }else  if((box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
-//         box5.classList.add("xchecked");//box 9 clicked by ai || box 6 and 7 clicked by person
-//         box5.classList.add("clicked") //done airoadsecondblock
-//     }else  if((box7.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
-//         box5.classList.add("xchecked");//box 9 clicked by ai || box 7 and 8 clicked by person
-//         box5.classList.add("clicked") //done airoadsecondblock
-//     }else  if((box6.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&(box9.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box5.classList.contains("ochecked"))){
-//         box5.classList.add("xchecked");//box 9 clicked by ai || box 6 and 8 clicked by person
-//         box5.classList.add("clicked")//done airroadsecondblock
-//     }else  if((box9.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box1.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box3.classList.contains("ochecked"))){
-//         box3.classList.add("xchecked");//box 1 clicked by ai || box 9 and 5 clicked by person
-//         box3.classList.add("clicked")
-//     }
-// }//ai proof done
-// function aiRoadBlockSecondMove(){
-//     if((box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&(box3.classList.contains("xchecked"))&&(box4.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box6.classList.contains("xchecked"))&&!(box7.classList.contains("xchecked"))&&!(box8.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))){
-//         box2.classList.add("xchecked");//box 3,4,9 clicked by ai || box 1,5,6,7 clicked by person
-//         box2.classList.add("clicked")
-//     }else if(!(box1.classList.contains("ochecked"))&&(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))&&(box1.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&(box3.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box6.classList.contains("xchecked"))&&!(box7.classList.contains("xchecked"))&&(box8.classList.contains("xchecked"))&&!(box9.classList.contains("xchecked"))){
-//         box4.classList.add("xchecked");//box 1,3,8 clicked by ai || box  2  5,7,9 clicked by person
-//         box4.classList.add("clicked")
-//     }
-// }
-// function aiRoadBlockFirstMove(){
-//     if((box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box6.classList.contains("xchecked"))&&!(box7.classList.contains("xchecked"))&&!(box8.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))){
-//           box3.classList.add("xchecked");//box 9 clicked by ai || box 1 and 5 clicked by person
-//           box3.classList.add("clicked") //done airoadsecondblock
-//       }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box6.classList.contains("xchecked"))&&!(box7.classList.contains("xchecked"))&&!(box8.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))){
-//           box5.classList.add("xchecked");//box 9 clicked by ai || box 3 and 6 clicked by person
-//           box5.classList.add("clicked") //done airoadsecondblock
-//       }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box6.classList.contains("xchecked"))&&!(box7.classList.contains("xchecked"))&&!(box8.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))){
-//           box5.classList.add("xchecked");//box 9 clicked by ai || box 6 and 7 clicked by person
-//           box5.classList.add("clicked") //done airoadsecondblock
-//       }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&(box7.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box6.classList.contains("xchecked"))&&!(box7.classList.contains("xchecked"))&&!(box8.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))){
-//           box5.classList.add("xchecked");//box 9 clicked by ai || box 7 and 8 clicked by person
-//           box5.classList.add("clicked") //done airoadsecondblock
-//       }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&!(box5.classList.contains("ochecked"))&&(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&(box8.classList.contains("ochecked"))&&!(box9.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box6.classList.contains("xchecked"))&&!(box7.classList.contains("xchecked"))&&!(box8.classList.contains("xchecked"))&&(box9.classList.contains("xchecked"))){
-//           box5.classList.add("xchecked");//box 9 clicked by ai || box 6 and 8 clicked by person
-//           box5.classList.add("clicked")//done airroadsecondblock
-//       }else  if(!(box1.classList.contains("ochecked"))&&!(box2.classList.contains("ochecked"))&&!(box3.classList.contains("ochecked"))&&!(box4.classList.contains("ochecked"))&&(box5.classList.contains("ochecked"))&&!(box6.classList.contains("ochecked"))&&!(box7.classList.contains("ochecked"))&&!(box8.classList.contains("ochecked"))&&(box9.classList.contains("ochecked"))&&!(box1.classList.contains("xchecked"))&&!(box2.classList.contains("xchecked"))&&!(box3.classList.contains("xchecked"))&&!(box4.classList.contains("xchecked"))&&!(box5.classList.contains("xchecked"))&&!(box6.classList.contains("xchecked"))&&!(box7.classList.contains("xchecked"))&&!(box8.classList.contains("xchecked"))&&!(box9.classList.contains("xchecked"))){
-//           box3.classList.add("xchecked");//box 1 clicked by ai || box 9 and 5 clicked by person
-//           box3.classList.add("clicked")
-//       }
-//   }
+}
+});
