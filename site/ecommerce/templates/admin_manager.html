@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Manager
+{% endblock %}
+{% block activea %}activea{% endblock %}
+{% block body %}
+    
+        <div class="container">
+            <div id="controller" class="m-3">Manage Members<span><img src="../static/images/arrow_right.png"  id = "arrow" class="arrow"></span></div>
+        <table class="m-3" id="membersFile">
+            <thead>
+                <tr>
+                    <th scope="col" class="id">ID</th>
+                    <th scope="col" class="content">Username</th>
+                    <th scope="col" class="delete">Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <th scope="row">{{ row.id }}</td>
+                    <td class="username">{{ row.username }}</td>
+                    <td class="remove">Remove</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+    </div>
+        <div class="container">
+            <div id="controllerp" class="m-3 ">Add product<span><img src="../static/images/arrow_right.png"  id = "arrowp" class="arrow"></span></div>
+            <form action="/admin_manager" id = "membersFilep" method = "POST">
+                
+                <div class="form-group m-3" >
+                    <label for="name">Product Name</label>
+                    <input type="text" id = "name" name = "name" class="form-control"  placeholder="Product Name">
+                    
+                  </div>
+                  <div class="form-group m-3">
+                    <label for="category">Product category</label><br>
+                    <select name="category " id="category" >
+                        <option value="">Category</option>
+                        <option value="Clothe">Cloth</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Electronics">Electronics</option>
+                    </select>
+                    </div>
+                    <div class="form-group m-3">
+                        <label for="image">Image of Product</label>
+                        <input type="file" id = "image" name = "image" class="form-control"  placeholder="Product Image">
+                        
+                        
+                      </div>
+
+                      <div class="form-group m-3">
+                        <label for="price">Price</label>
+                        <input type="number" id = "price" name = "price" class="form-control"  placeholder="Price">
+                      </div>
+                  <button type="submit" class="my-2 btn btn-primary buttonright">Submit</button>
+                
+            </form>
+            <p id = "success" class = "mt-3 ml-3 p-2"></p>
+            <p id = "error" class = "mt-3 ml-3 p-2"></p>
+        </div>
+<div class="container">
+            <div id="controllero" class="m-3">Manage Orders<span><img src="../static/images/arrow_right.png"  id = "arrowo" class="arrow"></span></div>
+        <table class="m-3" id="membersFileo">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">USERNAME</th>
+                    <th scope="col" class="priceo">PRICE</th>
+                    <th scope="col"  class="phoneo" >PHONE NUMBER</th>
+                    <th scope="col" class="producto">PRODUCT NAME</th>
+                    <th scope="col">Remove</th>
+                </tr>
+            </thead>
+            <tbody class="orderbody">
+                {% for order in orders %}
+                <tr>
+                    <th scope="row" class = "ido">{{ order.id }}</td>
+                    <td class="usernameo" >{{ order.username }}</td>
+                    <td  >{{ order.price }}</td>
+                    <td >{{ order.phone }}</td>
+                    <td >{{ order.productname }}</td>
+                    <td class="removeo">Remove</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+    </div> 
+
+    <div class="container">
+            <div id="controllerpd" class="m-3">Manage Products<span><img src="../static/images/arrow_right.png"  id = "arrowpd" class="arrow"></span></div>
+        <table class="m-3" id="membersFilepd">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Prdouct Name</th>
+                    <th scope="col" class="priceo">PRICE</th>
+                    <th scope="col"  class="phoneo" >Category</th>
+                    <th scope="col">Remove</th>
+                </tr>
+            </thead>
+            <tbody class="productpd">
+                {% for product in products %}
+                <tr>
+                    <th scope="row" class = "idpd">{{ product.id }}</td>
+                    <td class="productname" >{{ product.name }}</td>
+                    <td  >{{ product.price }}</td>
+                    <td  >{{ product.category }}</td>
+                    <td class="removepd">Remove</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+    </div> 
+
+{% endblock %}
+{% block script %}
+<script type="module" >
+import * as adminMember from '../static/js/adminMemberDelete.js';
+import * as adminProduct from '../static/js/adminProductManager.js'
+import * as adminOrder from '../static/js/adminOrder.js'
+import * as pd from '../static/js/productDelete.js'
+adminMember.memberDelete()
+adminProduct.extendProduct()
+adminProduct.addingProduct()
+adminOrder.order()
+pd.delete_product()
+</script>
+
+{% endblock %}

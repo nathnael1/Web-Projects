@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/css/styles.css"/>
+    <link rel="stylesheet" href="../static/css/card.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <title>Shopping</title>
+
+</head>
+<body>
+    <nav class="heading bg-light">
+        <a href="/" class="brand"><img src="../static/images/newlogo.png" class="logo"></a>
+        
+        <div><a href="/login"><img src="../static/images/logout.png" class="logos" alt="logout"></a><img src="../static/images/account.png" class="logo" alt=""><caption>{{username}}</caption></div>
+    </nav>
+    <form class = "mt-4" action = "/" method = "post" role="search">
+        <label for="search">Search for stuff</label>
+        <input id="searchInput" autocomplete="off" name = "search" type="search" placeholder="Search..."  required />
+        <button type="submit">Go</button>    
+    </form>
+    <div class="searchDropdown"></div>
+      <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <h2 class="tag ">ALL Products</h2>
+                {% for product in products %}
+                    <div class="col-md-4 col-lg-3 col-6 my-3 ">
+                        <div class="card cardc" id = "{{product.name}}">
+
+                            <div class="imgBox">
+                              <img src="../static/{{product.relative_image_path }}" alt="{{product.name}}"  class="mouse">
+                            </div>
+                          
+                            <div class="contentBox">
+                              <h3>{{product.name}}</h3>
+                              <h2 class="price">{{product.price}} Birr</h2>
+                              <a href="#" data-product ="{{product.id}}"class="buy">Buy Now</a>
+                            </div>
+                          
+                          </div>
+                    </div>
+                {% endfor %}
+            </div>
+           
+           
+      
+        </div> 
+      </div>
+      
+
+    <footer class="foot bg-light mt-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class = "col-md-3  col-6">
+                    <p class="title">Shopping &copy;2024</p>
+                    <img src="../static/images/newlogo.png" class="logofoot" alt="">
+                </div>
+                <div class = "col-md-3  col-6">
+                    <ul>
+                        <li class="head">Social media</li>
+                        <li><a href="t.me/nathnael_tamirat" target="_blank">Telegram</a></li>
+                        <li><a href="https://www.instagram.com/nathnael_tamirat/" target="_blank">Instagram</a></li>
+      
+                    </ul>
+                </div>
+                <div class = "col-md-3  col-6">
+                    <ul>
+                        <li class="head">Company</li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Carrers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class = "col-md-3  col-6">
+                    <ul>
+                        <li class="head">Further more information</li>
+                        <li><a href="#">Terms and Condition</a></li>
+                        <li><a href="#">Privacy and Policy</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../static/js/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="module">
+        import * as buybutton from '../static/js/Buybutton.js'
+        import * as search from '../static/js/search.js'
+        search.upload()
+        search.search()
+        search.getting()
+        buybutton.initializeBuyButton()
+    </script>
+</body>
+</html>

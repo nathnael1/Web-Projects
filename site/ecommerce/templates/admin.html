@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin
+{% endblock %}
+{% block activea %}activea{% endblock %}
+{% block body %}
+
+<div class="container my-auto ">
+<div class="row justify-content-center align-items-center imagediv my-3">
+<div class="col-md-6">
+    <h2>Admin</h2>
+<form  method = "post" action = "/admin">
+    
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" autocomplete="off" id = "username" name = "username" class="form-control"  placeholder="Username">
+      <small>{{user}}</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" autocomplete="off" class="form-control" id="password" name="password" placeholder="Password">
+      <small>{{password}}</small>
+      <small>{{error}}</small>
+    </div>
+    <button type="submit" class="my-3 btn btn-primary buttonright">Submit</button>
+  </form>
+</div>
+<div class="col-md-6 ">
+    <img src="../static/images/bganimatemiku.jpg"  class = "homeimg" alt=""/>
+</div>
+</div>
+</div>
+{% endblock %}

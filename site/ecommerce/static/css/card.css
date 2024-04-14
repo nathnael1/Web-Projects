@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Istok Web", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.card {
+    position: relative;
+    width: 240px; /* Decrease width */
+    height: 360px; /* Decrease height */
+    background: #F5F5F5;
+    border-radius: 16px; /* Decrease border radius */
+    overflow: hidden;
+    transition: 0.5s;
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    width: 100%;
+    height: 100%;
+    background: #ffce00;
+    transform: skewY(345deg);
+    transition: 0.5s;
+  }
+  
+  .card:hover::before {
+    top: -70%;
+    transform: skewY(390deg);
+  }
+  
+
+  
+  .card .imgBox {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 1;
+  }
+  
+  .card .imgBox img {
+    max-width: 100%;
+    transition: .5s;
+  }
+  
+  .card:hover .imgBox img {
+    max-width: 50%;
+  }
+  
+  .card .contentBox {
+    position: relative;
+    /* padding: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+  }
+  
+  .card .contentBox h3 {
+    font-size: 18px; /* Decrease font size */
+    font-weight: bolder;
+    color:#607e1c;
+    letter-spacing: 0.5px; /* Decrease letter spacing */
+  }
+  
+  .card .contentBox .price {
+    font-size: 20px; /* Decrease font size */
+    color:#607e1c;
+    letter-spacing: 0.5px; /* Decrease letter spacing */
+  }
+  
+  .card .contentBox .buy {
+    position: relative;
+    top: 80px;
+    opacity: 0;
+    padding: 8px 14px;
+    margin-top: 15px;
+    color: #000000;
+    font-size:14px;
+    text-decoration: none;
+    background: #ffce00;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: 0.5s;
+  }
+
+
+  .card:hover .contentBox .buy {
+    top: -20px;
+    opacity: 1;
+  }
+  .card:hover {
+    height: 400px; /* Increase height on hover to make space for the buy button */
+  }
+  .mouse {
+    height: 240px; /* Decrease height */
+    width: auto;
+  }
+  @media screen and (max-width:575px) {
+    .card {
+        width: 170px; /* Decrease width */
+        height: 180px; /* Decrease height */
+    }
+    .card .contentBox {
+      position: relative;
+      /* padding: 20px; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top:-80px;
+
+      z-index: 2;
+    }
+    .card:hover {
+        height: 200px; /* Increase height on hover to make space for the buy button */
+    }
+    .card .imgBox img {
+      max-width: 100%;
+      transition: .5s;
+    }
+    
+    .card:hover .imgBox img {
+      max-width: 50%;
+    }
+
+    .mouse {
+        height: 170px; 
+    }
+
+    .card .contentBox .buy {
+        top: 40px;
+        margin-top: -20px; /* Adjust the margin to position the button */
+    }
+
+    .card:hover .contentBox .buy {
+        top: -90px;
+        opacity: 1;
+    }
+
+    .card .contentBox h3 {
+        font-size: 18px; /* Decrease font size */
+        margin-bottom: 5px; /* Adjust margin to fit the text properly */
+    }
+
+    .card .contentBox .price {
+        font-size: 14px; /* Decrease font size */
+        margin-bottom: 10px; /* Adjust margin to fit the text properly */
+    }
+}

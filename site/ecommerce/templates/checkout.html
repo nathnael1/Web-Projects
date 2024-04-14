@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+{% block activel %}{% endblock %}
+{% block body %}
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-6 checkoutDiv my-3">
+            <div class="checkout" id = "checkoutName">Name: {{name}} </div>
+            <div class="checkout" id = "checkoutPrice">Price: {{price}}</div>
+            <div class="checkout" ><label for="phonenumber">Phone Number:</label><input type="text" id = "phone" autocomplete="off" autofocus placeholder="eg . 0912345678" name="phonenumber"></div>
+            <div class="checkoutSubmit" ><button id="checkoutSubmit">Confirm</button></div>
+            
+        </div>
+        <div class="col-6 my-3 checkoutimageDiv">
+            <img src="{{src}}" alt="{{name}}"  class="checkoutImage">
+        </div>
+
+ 
+
+          
+
+</div>
+<div class="successcheckout"></div>
+<div class="errorcheckout"></div>
+</div>
+</div>
+{% endblock %}
+{% block script %}
+<script type="module">
+import * as checkout from '../static/js/checkout.js'
+checkout.checkout()
+</script>
+
+{% endblock %}

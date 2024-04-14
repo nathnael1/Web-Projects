@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/css/styles.css"/>
+
+    <title>Shopping {% block title %}{% endblock %}</title>
+
+</head>
+<body>
+    <nav class="navbar p-2 navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img src="../static/images/newlogo.png" class="logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item p-2">
+                <a class="nav-link {% block activeh %} {% endblock %}" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item p-2">
+                <a class="nav-link {% block actives %} {% endblock %}" href="/signin">Signin</a>
+              </li>
+              <li class="nav-item p-2">
+                <a class="nav-link {% block activel %} {% endblock %}" href="/login">Login</a>
+              </li>
+              <li class="nav-item p-2 ">
+                <a class="nav-link {% block activea %} {% endblock %}" href="/admin">Admin</a>
+              </li>
+            </ul>
+        
+
+            
+          </div>
+        </div>
+      </nav> 
+      <div class="wrapper">{% block body %} {% endblock %}</div>
+      
+
+    <footer class="foot bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class = "col-md-3  col-6">
+                    <p class="title">Shopping &copy;2024</p>
+                    <img src="../static/images/newlogo.png" class="logofoot" alt="">
+                </div>
+                <div class = "col-md-3  col-6">
+                  <ul>
+                    <li class="head">Social media</li>
+                    <li><a href="t.me/nathnael_tamirat" target="_blank">Telegram</a></li>
+                    <li><a href="https://www.instagram.com/nathnael_tamirat/" target="_blank">Instagram</a></li>
+  
+                </ul>
+                </div>
+                <div class = "col-md-3  col-6">
+                    <ul>
+                        <li class="head">Company</li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Carrers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class = "col-md-3  col-6">
+                    <ul>
+                        <li class="head">Further more information</li>
+                        <li><a href="#">Terms and Condition</a></li>
+                        <li><a href="#">Privacy and Policy</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../static/js/jquery-3.7.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    {% block script %} {% endblock %}
+</body>
+</html>

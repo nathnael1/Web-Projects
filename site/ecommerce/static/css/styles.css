@@ -1,0 +1,323 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fcff;
+    background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
+    ;
+}
+.bg-light{
+    background-color: #FFFDD0;
+}
+.wrapper {
+    flex: 1; /* This will push the footer to the bottom */
+}
+
+.foot {
+    width: 100vw;
+  
+    padding: 2em;
+    /* Remove position: relative; and bottom: 0; */
+}
+ul{
+    list-style-type: none;
+}
+ul li a{
+    text-decoration: none;
+    color:#000;
+
+}
+.imagediv{
+    padding: 20px; /* Add padding to create space around the image */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+.homeimg {
+    width: 100%;
+    max-height: 400px; /* Adjust the maximum height as desired */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 10px;
+}
+.head{
+    font-weight: bolder;
+}
+.title{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.buttonright{
+    float:right;
+}
+.logo{
+    width:70px;
+    height:70px;   
+}
+.logos{
+    width:40px;
+    height:40px;
+}
+.logofoot{
+    width:120px;
+    height:120px; 
+}
+h2{
+    font-size: 1.8rem;
+    font-weight:bolder;
+    text-align:center
+}
+#controller,#controllerp,#controllero,#controllerpd{
+    width:80VW;
+    margin:auto;
+    background-color: #a79e9ebb;
+    color:#000;
+    height:fit-content;
+    border:3px solid #000;
+    padding:10px;
+    font-size: 15px;
+}
+.arrow,.arrowo,.arrowpd{
+    width:30px;
+    height:30px;
+    float:right;
+}
+.arrow:hover{
+    cursor: pointer;
+}
+.arrowo:hover{
+    cursor: pointer;
+}
+.arrowopd:hover{
+    cursor: pointer;
+}
+table{
+    width:80vw;
+}
+
+ th, td {
+    
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+.id{
+    width:10%;
+}
+.ido,i.dpd{
+    width:15%;
+}
+.usernameo{
+    width:50%;
+}
+.phoneo{
+    width:100%;
+}
+.priceo{
+    width:50%;
+}
+
+.content{
+    width:100%;
+    text-align: center;
+}
+.delete{
+    width:40%;
+}
+.username{
+    text-indent: 10px;
+    font-weight: bold;
+}
+  th, td {
+   
+    background-color: rgb(192, 209, 209);
+    padding:10px;
+  }
+.remove,.removeo,.removepd{
+border:5px solid blue;
+padding:5px;
+font-style: italic;
+background-color: #000;
+color: hsla(0, 0%, 100%, 0.801); 
+}
+.remove:hover{
+    cursor: pointer;
+}
+.removeo:hover{
+    cursor: pointer;
+}
+.removepd:hover{
+    cursor: pointer;
+}
+#info{
+    background-color: rgb(192, 209, 209);
+    padding:10px;
+    width:80vw;
+    color:black;
+    font-size:1.5rem;
+    
+}
+small{
+    color: #f00;
+}
+.heading{
+    display:flex;
+
+    justify-content: space-between;
+    padding:5px;
+}
+.heading div{
+    padding-right:15px;
+    font-weight: bolder;
+    font-size: 1.8rem;
+}
+.brand{
+    text-decoration: none;
+    color:black;
+    font-weight: Bolder;
+    font-size:1.8rem;
+    
+}
+.success{
+    background-color:#0f0;
+    font-size:2rem;
+}
+.error{
+    background-color:#f00;
+    font-size:2rem;
+}
+.tag{
+    font-size:1.5rem;
+    font-weight:bolder;
+    text-align: left;
+    font-style:italic;
+    color:#ffce00;
+}
+.disabled{
+    display:none
+}
+.checkoutContainer{
+background-color: aliceblue;
+padding:10px;
+}
+.checkout,.checkoutSubmit{
+    padding:10px;
+}
+.checkoutSubmit{
+    color:#000;
+    background-color:aqua;
+    border:2px solid #000;
+    float:right;
+    width:fit-content;
+    font-weight:bold;
+    border-radius:15px;
+    font-size:1rem;
+}
+.checkoutSubmit:hover{
+cursor: pointer;
+}
+.checkoutImage{
+    max-width: 100%;
+}
+#checkoutSubmit{
+    border:none;
+    background:aqua;
+}
+.checkoutDiv{
+    padding: 20px; /* Add padding to create space around the image */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    background-color: rgb(213, 252, 252);
+}
+.checkoutimageDiv{
+        padding: 20px; /* Add padding to create space around the image */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    background-color: rgb(172, 184, 184);
+}
+.successAbsolute{
+    position: absolute;
+    height:fit-content;
+    top:5%;
+    margin:0 auto;
+    background: #0f0;
+    color:black;
+    width:40vw;
+    padding:20px;
+    border-radius:15px;
+}
+.errorAbsolute{
+    position: absolute;
+    top:5%;
+    height: fit-content;
+    margin:0 auto;
+    background: #f00;
+    color:black;
+    width:40vw;
+    padding:20px;
+    border-radius:15px;
+}
+.all {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    padding-right: 10px;
+    display: inline-block;
+    padding: 10px 20px; 
+    border-radius: 10px; 
+    background-color: #f0f0f0; 
+    transition: background-color 0.3s;
+}
+
+.all:hover {
+    background-color: #ddd; 
+    color: #333; 
+}
+.searchDropdown {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px;
+    margin:0 auto;
+
+    z-index: 1;
+    width: 200px;
+}
+.searchDropdownItem {
+    padding: 5px;
+    cursor: pointer;
+}
+.searchDropdownItem:hover{
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+.alltag{
+    font-size:2rem;
+    font-weight:bolder;
+    text-align: left;
+    font-style:italic;
+    color:#ffce00;
+
+}
+@media screen and (max-width:570px) {
+    .logo{
+        width:40px;
+        height:40px;
+    }
+    caption{
+        font-size:0.4rem;
+    }
+}
+@media screen and (max-width:325px) {
+.col-6{
+width:100%;
+
+}
+.card{
+    margin:0 auto;
+}
+}
